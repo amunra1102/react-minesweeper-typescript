@@ -7,6 +7,11 @@
   border-top-color: $left-top;
 }
 
-@mixin button {
-
+@mixin buttons {
+  &:active {
+    border-right-color: white;
+    border-bottom-color: white;
+    border-left-color: #7B7B7B;
+    border-top-color: #7B7B7B;
+  }
 }

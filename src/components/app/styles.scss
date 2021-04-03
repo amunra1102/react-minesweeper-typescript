@@ -25,6 +25,7 @@
 
 .Face {
   @include borders;
+  @include buttons;
   width: 52px;
   height: 52px;
   font-size: 35px;

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Icon } from "@iconify/react";
+import smiletongueIcon from "@iconify-icons/fxemoji/smiletongue";
 
 import Button from "../button";
 import NumbersDisplay from "../numbers-display";
@@ -9,10 +11,19 @@ import "./styles.scss";
 
 const App: React.FC = () => {
   const [cells, setCells] = useState(generateCells());
+  console.log(cells);
 
   const renderCells = (): React.ReactNode => {
     return cells.map((row, rowIndex) =>
-      row.map((cell, colIndex) => <Button key={`${rowIndex}-${colIndex}`} />)
+      row.map((cell, colIndex) => (
+        <Button
+          key={`${rowIndex}-${colIndex}`}
+          state={cell.state}
+          value={cell.value}
+          row={rowIndex}
+          col={colIndex}
+        />
+      ))
     );
   };
 
@@ -21,9 +32,7 @@ const App: React.FC = () => {
       <div className="Header">
         <NumbersDisplay value={0} />
         <div className="Face">
-          <span role="img" aria-label="face">
-            icon
-          </span>
+          <Icon icon={smiletongueIcon} />
         </div>
         <NumbersDisplay value={23} />
       </div>
