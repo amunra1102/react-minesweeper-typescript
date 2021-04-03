@@ -1,52 +1,33 @@
+@import "../../styles/index.scss";
+
 .App {
+  @include borders(white, #999);
   background: #C2C2C2;
   padding: 16px;
-  border-width: 4px;
-  border-style: solid;
-  border-right-color: #999;
-  border-bottom-color: #999;
-  border-left-color: white;
-  border-top-color: white;
 }
 
 .Header {
+  @include borders(#7B7B7B, white);
   background: #C0C0C0;
   padding: 10px 12px;
-  border-width: 4px;
-  border-style: solid;
-  border-right-color: white;
-  border-bottom-color: white;
-  border-left-color: #7B7B7B;
-  border-top-color: #7B7B7B;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .Body {
+  @include borders(#7B7B7B, white);
   margin-top: 16px;
-  border-width: 4px;
-  border-style: solid;
-  border-style: solid;
-  border-right-color: white;
-  border-bottom-color: white;
-  border-left-color: #7B7B7B;
-  border-top-color: #7B7B7B;
   display: grid;
   grid-template-rows: repeat(9, 1fr);
   grid-template-columns: repeat(9, 1fr);
 }
 
 .Face {
+  @include borders;
   width: 52px;
   height: 52px;
   font-size: 35px;
-  border-style: solid;
-  border-style: solid;
-  border-right-color: #7B7B7B;
-  border-bottom-color: #7B7B7B;
-  border-left-color: white;
-  border-top-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
