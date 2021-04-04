@@ -10,6 +10,15 @@
   justify-content: center;
   font-weight: bold;
 
+  &.red {
+    background: red;
+  }
+
+  span {
+    font-size: 12px;
+    margin-left: 2px;
+  }
+
   &.visible {
     border-color: #7B7B7B;
     border-width: 1px;

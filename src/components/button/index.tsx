@@ -1,7 +1,4 @@
 import React from "react";
-import { Icon } from "@iconify/react";
-import bombIcon from "@iconify-icons/mdi/bomb";
-import flagInHole from "@iconify-icons/emojione/flag-in-hole";
 
 import { CellState, CellValue } from "../../types";
 
@@ -12,13 +9,26 @@ interface ButtonProps {
   col: number;
   state: CellState;
   value: CellValue;
+  onClick(rowParam: number, colParam: number): (...args: any[]) => void;
+  onContext(rowParam: number, colParam: number): (...args: any[]) => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ state, value, row, col }) => {
+const Button: React.FC<ButtonProps> = ({
+  state,
+  value,
+  row,
+  col,
+  onClick,
+  onContext,
+}) => {
   const renderContent = (): React.ReactNode => {
     if (state === CellState.Visible) {
       if (value === CellValue.Bomb) {
-        return <Icon icon={bombIcon} />;
+        return (
+          <span role="img" aria-label="bomb">
+            💣
+          </span>
+        );
       }
 
       if (value === CellValue.None) {
@@ -26,8 +36,14 @@ const Button: React.FC<ButtonProps> = ({ state, value, row, col }) => {
       }
 
       return value;
-    } else if (state === CellState.Flagged) {
-      return <Icon icon={flagInHole} />;
+    }
+
+    if (state === CellState.Flagged) {
+      return (
+        <span role="img" aria-label="flag">
+          🚩
+        </span>
+      );
     }
 
     return null;
@@ -37,6 +53,8 @@ const Button: React.FC<ButtonProps> = ({ state, value, row, col }) => {
     <div
       className={`Button
       ${state === CellState.Visible ? "visible" : ""} value-${value}`}
+      onClick={onClick(row, col)}
+      onContextMenu={onContext(row, col)}
     >
       {renderContent()}
     </div>
